@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 640px;
+            height: 360px;
+            background: #2481cc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .calculator {
+            width: 360px;
+            height: 240px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            width: 100%;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+            font-size: 24px;
+            color: #2481cc;
+            transition: all 0.3s ease;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            width: 70px;
+            height: 70px;
+            background: #2481cc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .button:hover {
+            background: #1a5c8f;
+            transform: scale(0.95);
+        }
+        .button:active {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <div class="button" onclick="appendNumber('7')">7</div>
+            <div class="button" onclick="appendNumber('8')">8</div>
+            <div class="button" onclick="appendNumber('9')">9</div>
+            <div class="button" onclick="setOperation('÷')">÷</div>
+            <div class="button" onclick="appendNumber('4')">4</div>
+            <div class="button" onclick="appendNumber('5')">5</div>
+            <div class="button" onclick="appendNumber('6')">6</div>
+            <div class="button" onclick="setOperation('×')">×</div>
+            <div class="button" onclick="appendNumber('1')">1</div>
+            <div class="button" onclick="appendNumber('2')">2</div>
+            <div class="button" onclick="appendNumber('3')">3</div>
+            <div class="button" onclick="setOperation('-')">-</div>
+            <div class="button" onclick="appendNumber('0')">0</div>
+            <div class="button" onclick="appendNumber('.')">.</div>
+            <div class="button" onclick="calculate()">=</div>
+            <div class="button" onclick="setOperation('+')">+</div>
+        </div>
+    </div>
+
+    <script>
+        let currentNumber = '0';
+        let operation = null;
+        let previousNumber = null;
+
+        function appendNumber(num) {
+            if (currentNumber === '0' && num !== '.') {
+                currentNumber = num;
+            } else {
+                currentNumber += num;
+            }
+            updateDisplay();
+        }
+
+        function setOperation(op) {
+            if (previousNumber === null) {
+                previousNumber = currentNumber;
+            } else {
+                calculate();
+            }
+            operation = op;
+            currentNumber = '0';
+            updateDisplay();
+        }
+
+        function calculate() {
+            if (previousNumber === null || operation === null) return;
+            
+            let result;
+            const prev = parseFloat(previousNumber);
+            const current = parseFloat(currentNumber);
+            
+            switch(operation) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '×':
+                    result = prev * current;
+                    break;
+                case '÷':
+                    result = prev / current;
+                    break;
+            }
+            
+            currentNumber = result.toString();
+            operation = null;
+            previousNumber = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').textContent = currentNumber;
+        }
+
+        // Автоматическая демонстрация
+        function demo() {
+            setTimeout(() => appendNumber('2'), 500);
+            setTimeout(() => appendNumber('3'), 1000);
+            setTimeout(() => setOperation('+'), 1500);
+            setTimeout(() => appendNumber('4'), 2000);
+            setTimeout(() => appendNumber('5'), 2500);
+            setTimeout(() => calculate(), 3000);
+            setTimeout(() => {
+                currentNumber = '0';
+                operation = null;
+                previousNumber = null;
+                updateDisplay();
+            }, 3500);
+        }
+
+        // Запускаем демонстрацию каждые 4 секунды
+        setInterval(demo, 4000);
+        demo();
+    </script>
+</body>
+</html> 

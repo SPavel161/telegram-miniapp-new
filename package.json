@@ -1,0 +1,28 @@
+{
+  "name": "telegram-calculator-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot with calculator mini-app",
+  "main": "server.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@twa-dev/sdk": "^8.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "next": "^13.4.19",
+    "node-telegram-bot-api": "^0.61.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.8",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.2.2"
+  }
+}

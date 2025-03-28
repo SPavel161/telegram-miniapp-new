@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="640" height="360" fill="#2481cc"/>
+  
+  <!-- Калькулятор -->
+  <rect x="120" y="60" width="400" height="240" rx="20" fill="white"/>
+  
+  <!-- Экран -->
+  <rect x="140" y="80" width="360" height="60" rx="10" fill="#f0f0f0"/>
+  
+  <!-- Кнопки -->
+  <g fill="#2481cc">
+    <!-- Первый ряд -->
+    <rect x="140" y="160" width="80" height="80" rx="10"/>
+    <rect x="240" y="160" width="80" height="80" rx="10"/>
+    <rect x="340" y="160" width="80" height="80" rx="10"/>
+    <rect x="440" y="160" width="80" height="80" rx="10"/>
+    
+    <!-- Второй ряд -->
+    <rect x="140" y="260" width="80" height="80" rx="10"/>
+    <rect x="240" y="260" width="80" height="80" rx="10"/>
+    <rect x="340" y="260" width="80" height="80" rx="10"/>
+    <rect x="440" y="260" width="80" height="80" rx="10"/>
+  </g>
+  
+  <!-- Текст -->
+  <text x="320" y="120" font-family="Arial" font-size="24" fill="#2481cc" text-anchor="middle">Calculator</text>
+</svg> 
