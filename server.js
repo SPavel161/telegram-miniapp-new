@@ -25,7 +25,7 @@ bot.onText(/\/start/, (msg) => {
 // Обработка команды /calc
 bot.onText(/\/calc/, (msg) => {
     const chatId = msg.chat.id;
-    const webAppUrl = `https://v0-mini-calculator-app.vercel.app`;
+    const webAppUrl = `https://telegram-miniapp-new.vercel.app`;
     bot.sendMessage(chatId, 'Откройте калькулятор:', {
         reply_markup: {
             inline_keyboard: [[
