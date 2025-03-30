@@ -6,6 +6,12 @@
       "use": "@vercel/next"
     }
   ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
   "env": {
     "BOT_TOKEN": "@bot_token",
     "NEXT_PUBLIC_BOT_USERNAME": "@bot_username"
