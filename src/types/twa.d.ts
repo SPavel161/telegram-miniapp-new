@@ -1,10 +1,11 @@
 declare module '@twa-dev/sdk' {
-  export const WebApp: {
-    init(): void;
-    ready(): void;
-    expand(): void;
-    close(): void;
-    MainButton: {
+  namespace WebApp {
+    function init(): void;
+    function ready(): void;
+    function expand(): void;
+    function close(): void;
+    
+    const MainButton: {
       text: string;
       color: string;
       textColor: string;
@@ -21,15 +22,17 @@ declare module '@twa-dev/sdk' {
       showProgress(leaveActive: boolean): void;
       hideProgress(): void;
     };
-    BackButton: {
+
+    const BackButton: {
       isVisible: boolean;
       onClick(callback: () => void): void;
       offClick(callback: () => void): void;
       show(): void;
       hide(): void;
     };
-    initData: string;
-    initDataUnsafe: {
+
+    const initData: string;
+    const initDataUnsafe: {
       query_id: string;
       user: {
         id: number;
@@ -42,10 +45,11 @@ declare module '@twa-dev/sdk' {
       auth_date: number;
       hash: string;
     };
-    platform: string;
-    version: string;
-    colorScheme: string;
-    themeParams: {
+
+    const platform: string;
+    const version: string;
+    const colorScheme: string;
+    const themeParams: {
       bg_color?: string;
       text_color?: string;
       hint_color?: string;
@@ -54,16 +58,18 @@ declare module '@twa-dev/sdk' {
       button_text_color?: string;
       secondary_bg_color?: string;
     };
-    isExpanded: boolean;
-    viewportHeight: number;
-    viewportStableHeight: number;
-    headerColor: string;
-    backgroundColor: string;
-    isClosingConfirmationEnabled: boolean;
-    onEvent(eventType: string, eventHandler: (event: any) => void): void;
-    offEvent(eventType: string, eventHandler: (event: any) => void): void;
-    sendData(data: any): void;
-    showPopup(params: {
+
+    const isExpanded: boolean;
+    const viewportHeight: number;
+    const viewportStableHeight: number;
+    const headerColor: string;
+    const backgroundColor: string;
+    const isClosingConfirmationEnabled: boolean;
+
+    function onEvent(eventType: string, eventHandler: (event: any) => void): void;
+    function offEvent(eventType: string, eventHandler: (event: any) => void): void;
+    function sendData(data: any): void;
+    function showPopup(params: {
       title?: string;
       message: string;
       buttons?: Array<{
@@ -72,9 +78,11 @@ declare module '@twa-dev/sdk' {
         text: string;
       }>;
     }, callback?: (buttonId: string) => void): void;
-    showAlert(message: string, callback?: () => void): void;
-    showConfirm(message: string, callback?: (confirmed: boolean) => void): void;
-    enableClosingConfirmation(): void;
-    disableClosingConfirmation(): void;
-  };
+    function showAlert(message: string, callback?: () => void): void;
+    function showConfirm(message: string, callback?: (confirmed: boolean) => void): void;
+    function enableClosingConfirmation(): void;
+    function disableClosingConfirmation(): void;
+  }
+
+  export = WebApp;
 } 
